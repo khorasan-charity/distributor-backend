@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Distributor.Messages.Database;
@@ -30,13 +31,12 @@ namespace Distributor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            EnvVars.SetDefaultValue(EnvVarKeys.DbUri, "Data Source=main.db");
+            Directory.CreateDirectory("data");
+            EnvVars.SetDefaultValue(EnvVarKeys.DbUri, "Data Source=data\\main.db");
             services.AddSingleton<IDbConnectionFactory, SqliteDbConnectionFactory>();
             services.AddScoped<LazyDbConnection>();
-
-            var dbFactory = new SqliteDbConnectionFactory();
             
-            using var lazyDbConnection = new LazyDbConnection(dbFactory);
+            using var lazyDbConnection = new LazyDbConnection(new SqliteDbConnectionFactory());
             new CreateDatabase(lazyDbConnection).ExecuteAsync().Wait();
         }
 
@@ -47,8 +47,6 @@ namespace Distributor
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 
