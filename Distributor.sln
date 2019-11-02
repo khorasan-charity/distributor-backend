@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distributor", "Distributor\Distributor.csproj", "{0F296CC4-754A-41D6-9124-CBB16CEF3ED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeteorCommon", "..\meteorcommon\MeteorCommon\MeteorCommon.csproj", "{FC7674A1-4FB4-4F38-986E-3BAFB6A7C198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeteorCommon.AspCore", "..\meteorcommon\MeteorCommon.AspCore\MeteorCommon.AspCore.csproj", "{AACB60A9-59FE-4428-B78D-909A7E0C65FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F296CC4-754A-41D6-9124-CBB16CEF3ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F296CC4-754A-41D6-9124-CBB16CEF3ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F296CC4-754A-41D6-9124-CBB16CEF3ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F296CC4-754A-41D6-9124-CBB16CEF3ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC7674A1-4FB4-4F38-986E-3BAFB6A7C198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC7674A1-4FB4-4F38-986E-3BAFB6A7C198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC7674A1-4FB4-4F38-986E-3BAFB6A7C198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC7674A1-4FB4-4F38-986E-3BAFB6A7C198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AACB60A9-59FE-4428-B78D-909A7E0C65FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AACB60A9-59FE-4428-B78D-909A7E0C65FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AACB60A9-59FE-4428-B78D-909A7E0C65FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AACB60A9-59FE-4428-B78D-909A7E0C65FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
