@@ -16,6 +16,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Distributor
 {
@@ -40,6 +42,11 @@ namespace Distributor
             
             using var lazyDbConnection = new LazyDbConnection(new SqliteDbConnectionFactory());
             new CreateDatabase(lazyDbConnection).ExecuteAsync().Wait();
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Distributor API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +56,13 @@ namespace Distributor
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Distributor API v1");
+            });
 
             app.UseRouting();
 
