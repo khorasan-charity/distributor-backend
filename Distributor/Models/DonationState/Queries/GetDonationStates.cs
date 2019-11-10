@@ -8,10 +8,6 @@ namespace Distributor.Models.DonationState.Queries
 {
     public class GetDonationStates : DbMessageByUserAsync<IEnumerable<DonationState>>
     {
-        public GetDonationStates(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
-        {
-        }
-
         protected override Task<IEnumerable<DonationState>> ExecuteMessageAsync()
         {
             return NewSql()

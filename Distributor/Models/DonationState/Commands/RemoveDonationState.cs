@@ -1,24 +1,17 @@
 using System.Threading.Tasks;
 using MeteorCommon.AspCore.Message.Db;
+using MeteorCommon.AspCore.Message.Db.Default;
 using MeteorCommon.Database;
 using MeteorCommon.Message.Db;
 
 namespace Distributor.Models.DonationState.Commands
 {
-    public class RemoveDonationState : DbMessageByUserAsync<int>
+    public class RemoveDonationState : DbDefaultDeleteByUserAsync
     {
         public int Id { get; set; }
 
-        public RemoveDonationState(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
+        public RemoveDonationState() : base("donation_state")
         {
-        }
-
-        protected override Task<int> ExecuteMessageAsync()
-        {
-            return NewSql()
-                .Delete("donation_state")
-                .WhereThisId()
-                .ExecuteAsync();
         }
     }
 }

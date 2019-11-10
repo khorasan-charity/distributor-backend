@@ -1,24 +1,17 @@
 using System.Threading.Tasks;
 using MeteorCommon.AspCore.Message.Db;
+using MeteorCommon.AspCore.Message.Db.Default;
 using MeteorCommon.Database;
 using MeteorCommon.Message.Db;
 
 namespace Distributor.Models.ScheduleType.Commands
 {
-    public class RemoveScheduleType : DbMessageByUserAsync<int>
+    public class RemoveScheduleType : DbDefaultDeleteByUserAsync
     {
         public int Id { get; set; }
 
-        public RemoveScheduleType(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
+        public RemoveScheduleType() : base("schedule_type")
         {
-        }
-
-        protected override Task<int> ExecuteMessageAsync()
-        {
-            return NewSql()
-                .Delete("schedule_type")
-                .WhereThisId()
-                .ExecuteAsync();
         }
     }
 }

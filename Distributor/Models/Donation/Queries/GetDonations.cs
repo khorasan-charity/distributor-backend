@@ -1,23 +1,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MeteorCommon.AspCore.Message.Db;
+using MeteorCommon.AspCore.Message.Db.Default;
 using MeteorCommon.Database;
 using MeteorCommon.Message.Db;
 
 namespace Distributor.Models.Donation.Queries
 {
-    public class GetDonations : DbQueryPageByUserAsync<Donation>
+    public class GetDonations : DbDefaultQueryPageByUserAsync<Donation>
     {
-        public GetDonations(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
+        public GetDonations() : base("donation")
         {
-        }
-
-        protected override Task<IEnumerable<Donation>> ExecuteMessageAsync()
-        {
-            return NewSql()
-                .Select("donation")
-                .AddPagination()
-                .QueryAsync<Donation>();
         }
     }
 }

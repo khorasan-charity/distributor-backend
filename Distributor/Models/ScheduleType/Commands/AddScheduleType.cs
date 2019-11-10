@@ -1,30 +1,19 @@
 using System.Threading.Tasks;
 using MeteorCommon.AspCore.Message.Db;
+using MeteorCommon.AspCore.Message.Db.Default;
 using MeteorCommon.Database;
 
 namespace Distributor.Models.ScheduleType.Commands
 {
-    public class AddScheduleType : DbMessageByUserAsync<int>
+    public class AddScheduleType : DbDefaultInsertByUserAsync<int>
     {
         public string Name { get; set; }
         
-        public AddScheduleType(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
+        public AddScheduleType() : base("schedule_type",
+            "name",
+            "@Name",
+            DatabaseType.Sqlite)
         {
-        }
-        
-        public AddScheduleType() : this(null)
-        {
-        }
-
-        protected override Task<int> ExecuteMessageAsync()
-        {
-            return NewSql()
-                .Insert("schedule_type",
-                    "name",
-                    "@Name")
-                .EndStatement()
-                .Append("SELECT last_insert_rowid();")
-                .ExecuteScalarAsync<int>();
         }
     }
 }

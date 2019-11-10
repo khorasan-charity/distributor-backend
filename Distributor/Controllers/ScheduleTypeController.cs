@@ -25,18 +25,18 @@ namespace Distributor.Controllers
 
         [HttpGet]
         public Task<OperationResult<IEnumerable<ScheduleType>>> Get() =>
-            new GetScheduleTypes(_lazyDbConnection).TryExecuteAsync();
+            _lazyDbConnection.TryExecuteDbMessageAsync(new GetScheduleTypes());
 
         [HttpPost]
         public Task<OperationResult<int>> Add(AddScheduleType cmd) =>
-            cmd.UseLazyDbConnection(_lazyDbConnection).TryExecuteAsync();
+            _lazyDbConnection.TryExecuteDbMessageAsync(cmd);
 
         [HttpPut]
-        public Task<OperationResult<int>> Update(UpdateScheduleType cmd) =>
-            cmd.UseLazyDbConnection(_lazyDbConnection).TryExecuteAsync();
+        public Task<OperationResult<bool>> Update(UpdateScheduleType cmd) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(cmd);
 
         [HttpDelete("{id}")]
-        public Task<OperationResult<int>> Remove(int id) =>
-            new RemoveScheduleType(_lazyDbConnection) {Id = id}.TryExecuteAsync();
+        public Task<OperationResult<bool>> Remove(int id) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(new RemoveScheduleType {Id = id});
     }
 }

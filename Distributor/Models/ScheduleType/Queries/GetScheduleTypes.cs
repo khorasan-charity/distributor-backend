@@ -7,10 +7,6 @@ namespace Distributor.Models.ScheduleType.Queries
 {
     public class GetScheduleTypes : DbMessageByUserAsync<IEnumerable<ScheduleType>>
     {
-        public GetScheduleTypes(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
-        {
-        }
-
         protected override Task<IEnumerable<ScheduleType>> ExecuteMessageAsync()
         {
             return NewSql()

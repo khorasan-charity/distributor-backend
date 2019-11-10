@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
 using MeteorCommon.AspCore.Message.Db;
+using MeteorCommon.AspCore.Message.Db.Default;
 using MeteorCommon.Database;
 using MeteorCommon.Message.Db;
 
 namespace Distributor.Models.Schedule.Commands
 {
-    public class UpdateSchedule: DbMessageByUserAsync<int>
+    public class UpdateSchedule: DbDefaultUpdateByUserAsync
     {
         public int Id { get; set; }
         public int DistributorId { get; set; }
@@ -15,22 +16,10 @@ namespace Distributor.Models.Schedule.Commands
         public long DoneAt { get; set; }
         public string Description { get; set; }
 
-        public UpdateSchedule(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
+        public UpdateSchedule() : base("schedule",
+            "distributor_id=@DistributorId, donor_id=@DonorId, schedule_type_id=@ScheduleTypeId," +
+            "due_at=@DueAt, done_at=@DoneAt, description=@Description")
         {
-        }
-        
-        public UpdateSchedule() : this(null)
-        {
-        }
-
-        protected override Task<int> ExecuteMessageAsync()
-        {
-            return NewSql()
-                .Update("schedule",
-                    "distributor_id=@DistributorId, donor_id=@DonorId, schedule_type_id=@ScheduleTypeId," +
-                    "due_at=@DueAt, done_at=@DoneAt, description=@Description")
-                .WhereThisId()
-                .ExecuteAsync();
         }
     }
 }

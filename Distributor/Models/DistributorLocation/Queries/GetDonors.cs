@@ -1,23 +1,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MeteorCommon.AspCore.Message.Db;
+using MeteorCommon.AspCore.Message.Db.Default;
 using MeteorCommon.Database;
 using MeteorCommon.Message.Db;
 
 namespace Distributor.Models.DistributorLocation.Queries
 {
-    public class GetDistributorLocations : DbQueryPageByUserAsync<DistributorLocation>
+    public class GetDistributorLocations : DbDefaultQueryPageByUserAsync<DistributorLocation>
     {
-        public GetDistributorLocations(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
+        public GetDistributorLocations() : base("distributor_location")
         {
-        }
-
-        protected override Task<IEnumerable<DistributorLocation>> ExecuteMessageAsync()
-        {
-            return NewSql()
-                .Select("distributor_location")
-                .AddPagination()
-                .QueryAsync<DistributorLocation>();
         }
     }
 }

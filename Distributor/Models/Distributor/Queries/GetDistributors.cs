@@ -1,23 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MeteorCommon.AspCore.Message.Db;
+using MeteorCommon.AspCore.Message.Db.Default;
 using MeteorCommon.Database;
 using MeteorCommon.Message.Db;
+using MeteorCommon.Message.Db.Default;
 
 namespace Distributor.Models.Distributor.Queries
 {
-    public class GetDistributors : DbQueryPageByUserAsync<Distributor>
+    public class GetDistributors : DbDefaultQueryPageByUserAsync<Distributor>
     {
-        public GetDistributors(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
+        public GetDistributors() : base("distributor")
         {
-        }
-
-        protected override Task<IEnumerable<Distributor>> ExecuteMessageAsync()
-        {
-            return NewSql()
-                .Select("distributor")
-                .AddPagination()
-                .QueryAsync<Distributor>();
         }
     }
 }

@@ -25,18 +25,18 @@ namespace Distributor.Controllers
 
         [HttpGet]
         public Task<OperationResult<IEnumerable<DonationType>>> Get() =>
-            new GetDonationTypes(_lazyDbConnection).TryExecuteAsync();
+            _lazyDbConnection.TryExecuteDbMessageAsync(new GetDonationTypes());
 
         [HttpPost]
         public Task<OperationResult<int>> Add(AddDonationType cmd) =>
-            cmd.UseLazyDbConnection(_lazyDbConnection).TryExecuteAsync();
+            _lazyDbConnection.TryExecuteDbMessageAsync(cmd);
 
         [HttpPut]
-        public Task<OperationResult<int>> Update(UpdateDonationType cmd) =>
-            cmd.UseLazyDbConnection(_lazyDbConnection).TryExecuteAsync();
+        public Task<OperationResult<bool>> Update(UpdateDonationType cmd) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(cmd);
 
         [HttpDelete("{id}")]
-        public Task<OperationResult<int>> Remove(int id) =>
-            new RemoveDonationType(_lazyDbConnection) {Id = id}.TryExecuteAsync();
+        public Task<OperationResult<bool>> Remove(int id) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(new RemoveDonationType {Id = id});
     }
 }

@@ -7,10 +7,6 @@ namespace Distributor.Models.DonationType.Queries
 {
     public class GetDonationTypes : DbMessageByUserAsync<IEnumerable<DonationType>>
     {
-        public GetDonationTypes(LazyDbConnection lazyDbConnection) : base(lazyDbConnection)
-        {
-        }
-
         protected override Task<IEnumerable<DonationType>> ExecuteMessageAsync()
         {
             return NewSql()

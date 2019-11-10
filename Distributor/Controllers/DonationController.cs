@@ -4,6 +4,7 @@ using Distributor.Models.Donation;
 using Distributor.Models.Donation.Commands;
 using Distributor.Models.Donation.Queries;
 using MeteorCommon.Database;
+using MeteorCommon.Message.Db;
 using MeteorCommon.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,23 +25,23 @@ namespace Distributor.Controllers
         }
 
         [HttpGet]
-        public Task<OperationResult<IEnumerable<Donation>>> Get([FromQuery] int page, [FromQuery] int take) =>
-            new GetDonations(_lazyDbConnection)
+        public Task<OperationResult<QueryPage<Donation>>> Get([FromQuery] int page, [FromQuery] int take) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(new GetDonations
             {
-                PageNo = page,
+                Page = page,
                 Take = take
-            }.TryExecuteAsync();
+            });
 
         [HttpPost]
         public Task<OperationResult<int>> Add(AddDonation cmd) =>
-            cmd.UseLazyDbConnection(_lazyDbConnection).TryExecuteAsync();
+            _lazyDbConnection.TryExecuteDbMessageAsync(cmd);
 
         [HttpPut]
-        public Task<OperationResult<int>> Update(UpdateDonation cmd) =>
-            cmd.UseLazyDbConnection(_lazyDbConnection).TryExecuteAsync();
+        public Task<OperationResult<bool>> Update(UpdateDonation cmd) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(cmd);
 
         [HttpDelete("{id}")]
-        public Task<OperationResult<int>> Remove(int id) =>
-            new RemoveDonation(_lazyDbConnection) {Id = id}.TryExecuteAsync();
+        public Task<OperationResult<bool>> Remove(int id) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(new RemoveDonation {Id = id});
     }
 }
