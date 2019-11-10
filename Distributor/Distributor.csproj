@@ -2,10 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <RestoreSources>http://nuget.skyth.ir/v3/index.json;https://api.nuget.org/v3/index.json</RestoreSources>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\meteorcommon\MeteorCommon.AspCore\MeteorCommon.AspCore.csproj" />
+      <PackageReference Include="MeteorCommon.AspCore" Version="0.5.0" />
     </ItemGroup>
 
 </Project>

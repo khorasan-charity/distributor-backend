@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  agencypay:
+    image: mahak-distributor
+    build:
+      context: .
+      dockerfile: Distributor/Dockerfile
+    container_name: mahak-distributor
+    restart: always
+    ports:
+      - "10004:80"
+    environment:
+      #DB_URI: "Host=postgresql;Database=agency_pay;Username=postgres;Password=P9yK7HF#!9nHPfZ@;Timezone=UTC;"
+      JWT_KEY: "qgb&8=a6La3GZ6qPa4568574597Zjs!Le#2!!AGvQb13359"
+    volumes:
+      - ../volumes/data:/app/data
+      - ../volumes/logs:/app/logs
+    networks:
+      - skyth
+
+networks:
+  skyth:
+    external:
+      name: skythnet

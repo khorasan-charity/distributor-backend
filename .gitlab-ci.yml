@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  only:
+    - master
+  script:
+    - rm -rf /home/admin/mahak/distributor/src
+    - mkdir -p /home/admin/mahak/distributor/src
+    - cp -r . /home/admin/mahak/distributor/src
+    - cd /home/admin/mahak/distributor/src && docker-compose build
+
+#test_job:
+#  stage: test
+#  script:
+#    - make test
+
+deploy_job:
+  stage: deploy
+  only:
+    - master
+  script:
+    - cd /home/admin/mahak/distributor/src && docker-compose up -d

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Distributor.Messages.Database;
 using MeteorCommon;
+using MeteorCommon.AspCore.Utils;
 using MeteorCommon.Database;
 using MeteorCommon.Database.Sqlite;
 using Microsoft.AspNetCore.Builder;
@@ -30,7 +31,8 @@ namespace Distributor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddMeteorJsonConverters();
             Directory.CreateDirectory("data");
             EnvVars.SetDefaultValue(EnvVarKeys.DbUri, "Data Source=data\\main.db");
             services.AddSingleton<IDbConnectionFactory, SqliteDbConnectionFactory>();
