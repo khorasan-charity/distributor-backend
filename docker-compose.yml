@@ -9,7 +9,7 @@ services:
     container_name: mahak-distributor
     restart: always
     ports:
-      - "10004:80"
+      - "20000:80"
     environment:
       #DB_URI: "Host=postgresql;Database=agency_pay;Username=postgres;Password=P9yK7HF#!9nHPfZ@;Timezone=UTC;"
       JWT_KEY: "qgb&8=a6La3GZ6qPa4568574597Zjs!Le#2!!AGvQb13359"
