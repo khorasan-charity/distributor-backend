@@ -39,14 +39,20 @@ namespace Distributor
             EnvVars.SetDefaultValue(EnvVarKeys.DbUri, "Data Source=data\\main.db");
             services.AddSingleton<IDbConnectionFactory, SqliteDbConnectionFactory>();
             services.AddScoped<LazyDbConnection>();
-            
+
             using var lazyDbConnection = new LazyDbConnection(new SqliteDbConnectionFactory());
             new CreateDatabase(lazyDbConnection).ExecuteAsync().Wait();
-            
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Distributor API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Distributor API", Version = "v1"});
             });
+
+            services.AddCors(x => x
+                .AddDefaultPolicy(y => y
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,13 +62,11 @@ namespace Distributor
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            app.UseCors();
             app.UseSwagger();
 
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Distributor API v1");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Distributor API v1"); });
 
             app.UseRouting();
 
