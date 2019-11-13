@@ -36,7 +36,7 @@ namespace Distributor
             services.AddControllers()
                 .AddMeteorJsonConverters();
             Directory.CreateDirectory("data");
-            EnvVars.SetDefaultValue(EnvVarKeys.DbUri, "Data Source=data\\main.db");
+            EnvVars.SetDefaultValue(EnvVarKeys.DbUri, "Data Source=data/main.db");
             services.AddSingleton<IDbConnectionFactory, SqliteDbConnectionFactory>();
             services.AddScoped<LazyDbConnection>();
 
