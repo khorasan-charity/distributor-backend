@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Distributor.Models.Donor;
 using Distributor.Models.Donor.Commands;
 using Distributor.Models.Donor.Queries;
@@ -31,6 +30,13 @@ namespace Distributor.Controllers
             {
                 Page = page,
                 Take = take
+            });
+        
+        [HttpGet("{id}")]
+        public Task<OperationResult<Models.Donor.Donor>> Get(int id) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(new GetDonor
+            {
+                Id = id
             });
 
         [HttpPost]

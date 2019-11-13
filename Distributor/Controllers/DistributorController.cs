@@ -30,6 +30,13 @@ namespace Distributor.Controllers
                 Page = page,
                 Take = take
             });
+        
+        [HttpGet("{id}")]
+        public Task<OperationResult<Models.Distributor.Distributor>> Get(int id) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(new GetDistributor
+            {
+                Id = id
+            });
 
         [HttpPost]
         public Task<OperationResult<int>> Add(AddDistributor cmd) =>
