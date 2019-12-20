@@ -10,4 +10,10 @@
       <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="out\web.config" />
+      <_ContentIncludedByDefault Remove="out\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="out\appsettings.json" />
+    </ItemGroup>
+
 </Project>
