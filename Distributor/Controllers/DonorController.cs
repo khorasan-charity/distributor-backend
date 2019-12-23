@@ -32,6 +32,10 @@ namespace Distributor.Controllers
                 Take = take
             });
         
+        [HttpGet("search")]
+        public Task<OperationResult<QueryPage<Donor>>> Get([FromQuery] SearchDonors m) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(m);
+        
         [HttpGet("{id}")]
         public Task<OperationResult<Models.Donor.Donor>> Get(int id) =>
             _lazyDbConnection.TryExecuteDbMessageAsync(new GetDonor
