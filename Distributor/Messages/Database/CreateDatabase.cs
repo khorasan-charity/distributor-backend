@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS schedule_type (
 CREATE TABLE IF NOT EXISTS schedule (
     id integer NOT NULL PRIMARY KEY,
     distributor_id integer REFERENCES distributor(id) ON DELETE RESTRICT,
-    donor_id integer REFERENCES distributor(id) ON DELETE RESTRICT,
+    donor_id integer REFERENCES donor(id) ON DELETE RESTRICT,
     schedule_type_id integer REFERENCES schedule_type(id) ON DELETE RESTRICT,
     due_at integer NOT NULL,
     done_at integer NOT NULL,
