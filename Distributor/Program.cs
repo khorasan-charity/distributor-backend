@@ -17,7 +17,7 @@ namespace Distributor
         public static void Main(string[] args)
         {
             Log.Logger = DefaultLogger
-                .Config()
+                .Config("Mahak Distributor")
                 .CreateLogger();
 
             try

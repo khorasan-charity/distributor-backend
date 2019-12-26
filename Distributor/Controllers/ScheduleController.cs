@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Distributor.Models.Schedule;
 using Distributor.Models.Schedule.Commands;
+using Distributor.Models.Schedule.Dto;
 using Distributor.Models.Schedule.Queries;
 using MeteorCommon.Database;
 using MeteorCommon.Message.Db;
@@ -25,12 +26,8 @@ namespace Distributor.Controllers
         }
 
         [HttpGet]
-        public Task<OperationResult<QueryPage<Schedule>>> Get([FromQuery] int page, [FromQuery] int take) =>
-            _lazyDbConnection.TryExecuteDbMessageAsync(new GetSchedules
-            {
-                Page = page,
-                Take = take
-            });
+        public Task<OperationResult<QueryPage<ScheduleWithNames>>> Get([FromQuery] GetSchedulePageWithNames m) =>
+            _lazyDbConnection.TryExecuteDbMessageAsync(m);
         
         [HttpGet("{id}")]
         public Task<OperationResult<Models.Schedule.Schedule>> Get(int id) =>

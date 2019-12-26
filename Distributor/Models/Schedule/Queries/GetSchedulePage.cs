@@ -7,9 +7,9 @@ using MeteorCommon.Message.Db;
 
 namespace Distributor.Models.Schedule.Queries
 {
-    public class GetSchedules : DbDefaultQueryPageByUserAsync<Schedule>
+    public class GetSchedulePage : DbDefaultQueryPageByUserAsync<Schedule>
     {
-        public GetSchedules() : base("schedule")
+        public GetSchedulePage() : base("schedule")
         {
         }
     }
