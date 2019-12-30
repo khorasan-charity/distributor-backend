@@ -58,14 +58,14 @@ namespace Distributor
                         RoleClaimType = "role",
                         ValidateIssuer = true,
                         ValidateLifetime = true,
-                        ValidAudiences = new[] {"mahak.dist.admin", "mahak.dist.dist"}
+                        ValidAudiences = new[] {"mahak.dist"}
                     };
                 });
             
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", builder =>
-                    builder.RequireClaim("scope", "mahak.dist.admin"));
+                    builder.RequireClaim("scope", "mahak.dist"));
                 
                 options.AddPolicy("Distributor", builder =>
                     builder.RequireClaim("scope", "mahak.dist.dist"));
