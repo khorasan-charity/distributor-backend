@@ -5,12 +5,14 @@ using Distributor.Models.DonationType.Commands;
 using Distributor.Models.DonationType.Queries;
 using MeteorCommon.Database;
 using MeteorCommon.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Distributor.Controllers
 {
     [ApiController]
+    [Authorize("Admin")]
     [Route("api/[controller]")]
     public class DonationTypeController : ControllerBase
     {

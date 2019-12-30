@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MeteorCommon.AspCore" Version="0.6.85" />
+      <PackageReference Include="MeteorCommon.AspCore" Version="0.6.87" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     </ItemGroup>
 

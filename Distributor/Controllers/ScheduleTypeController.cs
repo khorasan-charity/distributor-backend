@@ -5,12 +5,14 @@ using Distributor.Models.ScheduleType.Commands;
 using Distributor.Models.ScheduleType.Queries;
 using MeteorCommon.Database;
 using MeteorCommon.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Distributor.Controllers
 {
     [ApiController]
+    [Authorize("Admin")]
     [Route("api/[controller]")]
     public class ScheduleTypeController : ControllerBase
     {
