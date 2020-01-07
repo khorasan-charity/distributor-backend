@@ -63,11 +63,17 @@ CREATE TABLE IF NOT EXISTS schedule_type (
     name text NOT NULL,
     created_at text NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE IF NOT EXISTS schedule_result_type (
+    id integer NOT NULL PRIMARY KEY,
+    name text NOT NULL,
+    created_at text NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 CREATE TABLE IF NOT EXISTS schedule (
     id integer NOT NULL PRIMARY KEY,
     distributor_id integer REFERENCES distributor(id) ON DELETE RESTRICT,
     donor_id integer REFERENCES donor(id) ON DELETE RESTRICT,
     schedule_type_id integer REFERENCES schedule_type(id) ON DELETE RESTRICT,
+    schedule_result_type_id integer REFERENCES schedule_result_type(id) ON DELETE RESTRICT, 
     due_at integer NOT NULL,
     done_at integer NOT NULL,
     description text NULL,
