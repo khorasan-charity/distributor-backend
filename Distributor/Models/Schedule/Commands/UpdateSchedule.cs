@@ -14,11 +14,12 @@ namespace Distributor.Models.Schedule.Commands
         public int ScheduleTypeId { get; set; }
         public long DueAt { get; set; }
         public long DoneAt { get; set; }
+        public int ScheduleResultTypeId { get; set; }
         public string Description { get; set; }
 
         public UpdateSchedule() : base("schedule",
             "distributor_id=@DistributorId, donor_id=@DonorId, schedule_type_id=@ScheduleTypeId," +
-            "due_at=@DueAt, done_at=@DoneAt, description=@Description")
+            "due_at=@DueAt, done_at=@DoneAt, schedule_result_type_id=@ScheduleResultTypeId, description=@Description")
         {
         }
     }
