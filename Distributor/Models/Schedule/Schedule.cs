@@ -10,6 +10,7 @@ namespace Distributor.Models.Schedule
         public int ScheduleTypeId { get; set; }
         public long DueAt { get; set; }
         public long DoneAt { get; set; }
+        public int ScheduleResultTypeId { get; set; }
         public string Description { get; set; }
         public Instant CreatedAt { get; set; }
     }
