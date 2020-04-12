@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 namespace Distributor.Controllers
 {
     [ApiController]
-    [Authorize("Admin")]
+    // [Authorize("Admin")]
     [Route("api/[controller]")]
     public class DistributorLocationController : ControllerBase
     {
