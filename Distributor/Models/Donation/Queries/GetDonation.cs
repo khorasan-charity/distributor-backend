@@ -1,4 +1,4 @@
-using MeteorCommon.AspCore.Message.Db.Default;
+using Meteor.AspCore.Message.Db.Default;
 
 namespace Distributor.Models.Donation.Queries
 {

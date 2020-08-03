@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using MeteorCommon.Message.Db;
+using Meteor.Message.Db;
 
 namespace Distributor.Models.Distributor.Queries
 {

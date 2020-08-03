@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Distributor.Models.Distributor.Commands;
 using Distributor.Models.Distributor.Queries;
-using MeteorCommon.Database;
-using MeteorCommon.Message.Db;
-using MeteorCommon.Utils;
+using Meteor.Database;
+using Meteor.Message.Db;
+using Meteor.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

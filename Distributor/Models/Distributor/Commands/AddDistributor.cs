@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using MeteorCommon.AspCore.Message.Db;
-using MeteorCommon.AspCore.Message.Db.Default;
-using MeteorCommon.Database;
-using MeteorCommon.Message;
-using MeteorCommon.Message.Db.Default;
-using MeteorCommon.Utils;
+using Meteor.AspCore.Message.Db;
+using Meteor.AspCore.Message.Db.Default;
+using Meteor.Database;
+using Meteor.Message;
+using Meteor.Message.Db.Default;
+using Meteor.Utils;
 
 namespace Distributor.Models.Distributor.Commands
 {

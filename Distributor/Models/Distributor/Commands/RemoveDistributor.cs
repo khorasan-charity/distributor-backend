@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using MeteorCommon.AspCore.Message.Db;
-using MeteorCommon.AspCore.Message.Db.Default;
-using MeteorCommon.Database;
-using MeteorCommon.Message.Db;
-using MeteorCommon.Message.Db.Default;
+using Meteor.AspCore.Message.Db;
+using Meteor.AspCore.Message.Db.Default;
+using Meteor.Database;
+using Meteor.Message.Db;
+using Meteor.Message.Db.Default;
 
 namespace Distributor.Models.Distributor.Commands
 {

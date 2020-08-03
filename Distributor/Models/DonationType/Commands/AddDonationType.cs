@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using MeteorCommon.AspCore.Message.Db;
-using MeteorCommon.AspCore.Message.Db.Default;
-using MeteorCommon.Database;
+using Meteor.AspCore.Message.Db;
+using Meteor.AspCore.Message.Db.Default;
+using Meteor.Database;
 
 namespace Distributor.Models.DonationType.Commands
 {

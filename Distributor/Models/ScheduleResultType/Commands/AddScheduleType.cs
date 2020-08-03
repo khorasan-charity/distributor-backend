@@ -1,5 +1,5 @@
-using MeteorCommon.AspCore.Message.Db.Default;
-using MeteorCommon.Database;
+using Meteor.AspCore.Message.Db.Default;
+using Meteor.Database;
 
 namespace Distributor.Models.ScheduleResultType.Commands
 {

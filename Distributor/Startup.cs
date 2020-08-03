@@ -1,9 +1,9 @@
 using System.IO;
 using Distributor.Messages.Database;
-using MeteorCommon;
-using MeteorCommon.AspCore.Utils;
-using MeteorCommon.Database;
-using MeteorCommon.Database.Sqlite;
+using Meteor;
+using Meteor.AspCore.Utils;
+using Meteor.Database;
+using Meteor.Database.Sqlite;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

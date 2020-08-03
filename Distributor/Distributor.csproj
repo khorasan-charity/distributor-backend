@@ -1,19 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
-        <RestoreSources>http://nuget.skyth.ir/v3/index.json;https://api.nuget.org/v3/index.json</RestoreSources>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="MeteorCommon.AspCore" Version="0.6.87" />
-      <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
-    </ItemGroup>
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="out\web.config" />
       <_ContentIncludedByDefault Remove="out\appsettings.Development.json" />
       <_ContentIncludedByDefault Remove="out\appsettings.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Meteor.AspCore" Version="0.7.0" />
     </ItemGroup>
 
 </Project>

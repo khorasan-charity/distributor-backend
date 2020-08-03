@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using MeteorCommon.Database;
-using MeteorCommon.Message;
-using MeteorCommon.Message.Db;
+using Meteor.Database;
+using Meteor.Message;
+using Meteor.Message.Db;
 
 namespace Distributor.Messages.Database
 {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MeteorCommon.AspCore.Message.Db;
-using MeteorCommon.Database;
+using Meteor.AspCore.Message.Db;
+using Meteor.Database;
 
 namespace Distributor.Models.ScheduleType.Queries
 {
